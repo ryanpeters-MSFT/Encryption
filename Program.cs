@@ -19,11 +19,11 @@ internal class Program
 
         const string phrase = "my-super-cryptic-passphrase";
 
-        var objectEncoded = await EncryptToBase64StringAsync(dog, phrase);
+        var encryptedDog = await EncryptToBase64StringAsync(dog, phrase);
 
-        Console.WriteLine($"Base-64 encoded/encrypted dog: {objectEncoded}");
+        Console.WriteLine($"Base-64 encoded/encrypted dog: {encryptedDog}");
 
-        var decryptedDog = await DecryptFromBase64StringAsync<Dog>(objectEncoded, phrase);
+        var decryptedDog = await DecryptFromBase64StringAsync<Dog>(encryptedDog, phrase);
 
         Console.WriteLine($"Decrypted dog name: {decryptedDog.Name}");
         Console.WriteLine($"Decrypted dog breed: {decryptedDog.Breed}");
