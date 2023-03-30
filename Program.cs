@@ -37,10 +37,10 @@ internal class Program
         // serialize the payload to a JSON string
         var serialized = JsonSerializer.Serialize(payload, payload.GetType());
 
-        // encrypt the byte array
+        // encrypt the string to byte array
         var encrypted = await CryptographyHelper.EncryptAsync(serialized, passphrase);
 
-        // convert to base64 for use in cookie
+        // encode to base64 for use in cookie
         return System.Convert.ToBase64String(encrypted);
     }
 
