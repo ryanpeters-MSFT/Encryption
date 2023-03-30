@@ -35,7 +35,7 @@ internal class Program
     public static async Task<string> EncryptToBase64StringAsync(object payload, string passphrase)
     {
         // serialize the payload to a JSON string
-        var serialized = JsonSerializer.Serialize(payload, payload.GetType());
+        var serialized = JsonSerializer.Serialize(payload);
 
         // encrypt the string to byte array
         var encrypted = await CryptographyHelper.EncryptAsync(serialized, passphrase);
