@@ -26,14 +26,14 @@ public static class CryptographyHelper
         }
     }
 
-    public static async Task<string> DecryptAsync(byte[] encrypted, string passphrase)
+    public static async Task<string> DecryptAsync(byte[] ciphertext, string passphrase)
     {
         using (var aes = Aes.Create())
         {
             aes.Key = GetKey(passphrase);
             aes.IV = initVector;
 
-            using (var input = new MemoryStream(encrypted))
+            using (var input = new MemoryStream(ciphertext))
             {
                 using (var cryptoStream = new CryptoStream(input, aes.CreateDecryptor(), CryptoStreamMode.Read))
                 {
@@ -54,6 +54,6 @@ public static class CryptographyHelper
         var hashMethod = HashAlgorithmName.SHA512;
         var passwordBytes = Encoding.Unicode.GetBytes(password);
 
-        return Rfc2898DeriveBytes.Pbkdf2(Encoding.Unicode.GetBytes(password), emptySalt, 2000, hashMethod, 16);
+        return Rfc2898DeriveBytes.Pbkdf2(passwordBytes, emptySalt, 2000, hashMethod, 16);
     }
 }

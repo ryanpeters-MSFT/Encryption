@@ -25,11 +25,11 @@ internal class Program
 
         var decryptedDog = await DecryptFromBase64StringAsync<Dog>(encryptedDog, phrase);
 
-        Console.WriteLine($"Decrypted dog name: {decryptedDog.Name}");
-        Console.WriteLine($"Decrypted dog breed: {decryptedDog.Breed}");
-        Console.WriteLine($"Decrypted dog age: {decryptedDog.Age}");
-        Console.WriteLine($"Decrypted dog food name: {decryptedDog.FavoriteFood.Name}");
-        Console.WriteLine($"Decrypted dog food cost: {decryptedDog.FavoriteFood.Cost}");
+        Console.WriteLine($"Dog.Name: {decryptedDog.Name}");
+        Console.WriteLine($"Dog.Breed: {decryptedDog.Breed}");
+        Console.WriteLine($"Dog.Age: {decryptedDog.Age}");
+        Console.WriteLine($"Dog.FavoriteFood.Name: {decryptedDog.FavoriteFood.Name}");
+        Console.WriteLine($"Dog.FavoriteFood.Cost: {decryptedDog.FavoriteFood.Cost}");
     }
 
     public static async Task<string> EncryptToBase64StringAsync(object payload, string passphrase)
