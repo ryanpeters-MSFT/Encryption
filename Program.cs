@@ -17,6 +17,7 @@ internal class Program
             }
         };
 
+        // store securely (consider environment variable or secret)
         const string phrase = "my-super-cryptic-passphrase";
 
         var encryptedDog = await EncryptToBase64StringAsync(dog, phrase);
